@@ -1,0 +1,52 @@
+﻿@using Projekt_ASP_NET.Enums
+@model Travel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h2>Detale kontaktu @Model.Id</h2>
+<table class="table">
+    <tr>
+        <th>
+            Imię
+        </th>
+        <th>
+            Data rozpoczęcia
+        </th>
+        <th>
+            Data zakończenia
+        </th>
+        <th>
+            Miejsce rozpoczęcia
+        </th>
+        <th>
+            Miejsce zakończenia
+        </th>
+        <th>
+            Uczestnicy
+        </th>
+        <th>
+            Przewodnik
+        </th>
+        <th>
+            Time of Creation
+        </th>
+    </tr>
+        <tr>
+            <td>
+                @Model.Name
+            </td>
+            <td>
+                @Model.StartDate
+            </td>
+            <td>@Model.EndDate</td>
+            <td>@Model.StartPlace</td>
+            <td>@Model.EndPlace</td>
+            <td>@Model.Participants</td>
+            <td>@Model.Guide.GetDisplayName()</td>
+            <td>@Model.Created</td>
+        </tr>
+</table>
+<a asp-controller="Travel" asp-action="Index">Powrót</a>

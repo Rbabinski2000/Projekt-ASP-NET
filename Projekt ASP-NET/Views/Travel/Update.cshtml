@@ -1,0 +1,50 @@
+﻿@using Projekt_ASP_NET.Enums
+@model Travel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>Edycja wycieczki</h1>
+<form asp-controller="Travel" asp-action="Update" method="post">
+    <div class="mb-3">
+        <label asp-for="Name">Nazwa</label>
+        <input class="form-control" asp-for="Name" />
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="StartDate">Data Rozpoczęcia</label>
+        <input class="form-control" type="Date" asp-for="StartDate" />
+        <span class="text-danger" asp-validation-for="StartDate"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="EndDate">Data Zakończenia</label>
+        <input class="form-control" type="Date" asp-for="EndDate" />
+        <span class="text-danger" asp-validation-for="EndDate"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="StartPlace">Miejsce rozpoczęcia</label>
+        <input class="form-control" asp-for="StartPlace" />
+        <span class="text-danger" asp-validation-for="StartPlace"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="EndPlace">Miejsce zakończenia</label>
+        <input class="form-control" asp-for="EndPlace" />
+        <span class="text-danger" asp-validation-for="EndPlace"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Participants">Uczestnik</label>
+        <input class="form-control" asp-for="Participants" />
+        <span class="text-danger" asp-validation-for="Participants"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Guide"></label>
+        <select class="form-control" asp-for="Guide" asp-items="@Html.GetEnumSelectList<Guides>()"></select>
+        <span class="text-danger" asp-validation-for="Guide"></span>
+    </div>
+    <input class="form-control" asp-for="Created" />
+
+    <button class="btn btn-primary" type="submit">Zapisz</button>
+    <button class="btn btn-primary" type="Reset">Resetuj</button>
+</form>
+

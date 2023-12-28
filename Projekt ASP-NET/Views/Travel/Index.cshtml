@@ -1,0 +1,60 @@
+﻿@using Projekt_ASP_NET.Enums 
+@model List<Travel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Lista kontaktów</h2>
+<table class="table">
+    <tr>
+        <th>
+            Imię
+        </th>
+        <th>
+            Data rozpoczęcia
+        </th>
+        <th>
+            Data zakończenia
+        </th>
+        <th>
+            Miejsce rozpoczęcia
+        </th>
+        <th>
+            Akcje
+        </th>
+    </tr>
+    @foreach (var item in @Model)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.StartDate
+            </td>
+            <td>
+                @item.EndDate
+            </td>
+            <td>
+                @item.StartPlace
+            </td>
+            <td>
+                @item.Guide.GetDisplayName()
+            </td>
+            <td>
+                <a class="btn btn-primary"
+                   asp-action="Update"
+                   asp-controller="Travel"
+                   asp-route-id=@item.Id>Edytuj</a>
+                <a class="btn btn-primary"
+                   asp-action="Details"
+                   asp-controller="Travel"
+                   asp-route-id=@item.Id>Szczegóły</a>
+                <a class="btn btn-primary"
+                   asp-action="Delete"
+                   asp-controller="Travel"
+                   asp-route-id=@item.Id>Usuń</a>
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,14 @@
+﻿@model Travel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2>Usuwanie wycieczki o id @Model.Id</h2>
+<form asp-controller="Travel" asp-action="Delete" method="post">
+    <input asp-for="Id" />
+    <p>Czy na pewno usunąc</p>
+    <button type="submit">Tak</button>
+    <a asp-controller="Travel" asp-action="Index">Nie</a>
+
+</form>
