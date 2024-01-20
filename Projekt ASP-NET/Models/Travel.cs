@@ -12,6 +12,7 @@ namespace Projekt_ASP_NET.Models
 
         [Required(ErrorMessage = "Proszę podać nazwe!")]
         [StringLength(maximumLength: 100, ErrorMessage = "Zbyt długia nazwa")]
+        [Display(Name="Nazwa")]
         public string Name { get; set; }
 
         [DataType(DataType.Date)]

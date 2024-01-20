@@ -3,16 +3,24 @@ using Projekt_ASP_NET.Models;
 using System.Diagnostics;
 using Projekt_ASP_NET.Enums;
 using System;
+using Projekt_ASP_NET.Interfaces;
 
 namespace Projekt_ASP_NET.Controllers
 {
     public class TravelController : Controller
     {
+        private readonly ITravelService _travelService;
         static Dictionary<int, Travel> _travels = new Dictionary<int, Travel>();
 
         static DateTime tempD1 = new DateTime(2022, 10, 10);
         static DateTime tempD2 = new DateTime(2022, 10, 15);
         static Travel tt = new Travel();
+
+        public TravelController(ITravelService travelService)
+        {
+            _travelService = travelService;
+        }
+
         public IActionResult Index()
         {
             if (_travels.Count() == 0)
