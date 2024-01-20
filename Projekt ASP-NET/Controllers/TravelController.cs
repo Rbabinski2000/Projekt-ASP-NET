@@ -9,17 +9,17 @@ namespace Projekt_ASP_NET.Controllers
 {
     public class TravelController : Controller
     {
-        private readonly ITravelService _travelService;
+        //private readonly ITravelService _travelService;
         static Dictionary<int, Travel> _travels = new Dictionary<int, Travel>();
 
         static DateTime tempD1 = new DateTime(2022, 10, 10);
         static DateTime tempD2 = new DateTime(2022, 10, 15);
         static Travel tt = new Travel();
 
-        public TravelController(ITravelService travelService)
+        /*public TravelController(ITravelService travelService)
         {
             _travelService = travelService;
-        }
+        }*/
 
         public IActionResult Index()
         {

@@ -1,6 +1,6 @@
 ﻿using Data.Entities;
-//using Microsoft.AspNetCore.Identity;
-//using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         private string DbPath { get; set; }
         public DbSet<TravelEntity> Travels { get; set; }
@@ -38,7 +38,7 @@ namespace Data
 
             base.OnModelCreating(modelBuilder);
 
-            /*PasswordHasher<IdentityUser> ph = new PasswordHasher<IdentityUser>();
+            PasswordHasher<IdentityUser> ph = new PasswordHasher<IdentityUser>();
             var user = new IdentityUser()
             {
                 Id = Guid.NewGuid().ToString(),
@@ -55,8 +55,8 @@ namespace Data
                 .HasData(
                     user
                 ) ;
-            */
-            /*var adminRole = new IdentityRole()
+            
+            var adminRole = new IdentityRole()
             {
                 Id = Guid.NewGuid().ToString(),
                 Name = "admin",
@@ -77,7 +77,7 @@ namespace Data
                         UserId= user.Id
                     }
                 );
-            */
+            
 
             modelBuilder.Entity<GuideEntity>()
                 .OwnsOne(a => a.Address);

@@ -13,7 +13,7 @@ namespace Projekt_ASP_NET.Services
 
         public MemoryTravelService(AppDbContext context) 
         {  
-            _context = context; 
+           _context = context; 
         }
 
         public int Add(Travel travel)
@@ -33,7 +33,8 @@ namespace Projekt_ASP_NET.Services
 
         public List<TravelEntity> FindAllGuidesForVieModel()
         {
-            return _context.Guides.ToList();
+            //return _context.Guides.ToList();
+            throw new NotImplementedException();
         }
 
         public Travel? FindById(int id)
