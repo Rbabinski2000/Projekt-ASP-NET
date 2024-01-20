@@ -26,7 +26,7 @@ namespace Projekt_ASP_NET
            
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-            //builder.Services.AddSingleton<IContactService, MemoryContactService>();// do service
+            //builder.Services.AddSingleton<ITravelService, MemoryTravelService>();// do service
 
             var app = builder.Build();
 

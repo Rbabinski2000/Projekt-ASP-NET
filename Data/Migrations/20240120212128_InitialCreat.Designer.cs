@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240120173241_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240120212128_InitialCreat")]
+    partial class InitialCreat
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -105,7 +105,7 @@ namespace Data.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2024, 1, 20, 18, 32, 41, 538, DateTimeKind.Local).AddTicks(4186),
+                            Created = new DateTime(2024, 1, 20, 22, 21, 28, 181, DateTimeKind.Local).AddTicks(5369),
                             EndDate = new DateTime(2012, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndPlace = "Kair",
                             GuideId = 1,
@@ -117,7 +117,7 @@ namespace Data.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2024, 1, 20, 18, 32, 41, 538, DateTimeKind.Local).AddTicks(4241),
+                            Created = new DateTime(2024, 1, 20, 22, 21, 28, 181, DateTimeKind.Local).AddTicks(5421),
                             EndDate = new DateTime(2013, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndPlace = "Egipt",
                             GuideId = 2,
@@ -156,8 +156,8 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8c642819-fa43-41a5-95f1-afc38c807a91",
-                            ConcurrencyStamp = "8c642819-fa43-41a5-95f1-afc38c807a91",
+                            Id = "dcdc39d7-ea85-41f2-b4d5-29f5c071f2a3",
+                            ConcurrencyStamp = "dcdc39d7-ea85-41f2-b4d5-29f5c071f2a3",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -252,17 +252,17 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "52ac1cfc-dfa3-4b22-84ab-905e6dd31656",
+                            Id = "78493291-f341-4f41-888d-0c88ee2b74d2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2635914b-5c93-494f-a024-002acd82a8a0",
+                            ConcurrencyStamp = "7f553f87-bdf3-4f3e-bd04-a8b26198a9d0",
                             Email = "adamo@micros.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADAMO@MICROS.COM",
                             NormalizedUserName = "ADAMO",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBKHhgFoB21BHHHp619ibEkUEr/Jy+BnSqAV3G1RORPuHmK7gENSPbN2GLb5z/BvDg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEN1FKvIOa+i8iVmctrE2Kn01orKaVhnbU0nJlhqU7G6qAylRjMTGJabE6X79dnjqQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1ebbeaa6-c37c-4c2e-bbe5-b5d6f62fc94e",
+                            SecurityStamp = "8cb0597e-249f-48ba-ac90-be8d204bdb2c",
                             TwoFactorEnabled = false,
                             UserName = "adamo"
                         });
@@ -330,8 +330,8 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "52ac1cfc-dfa3-4b22-84ab-905e6dd31656",
-                            RoleId = "8c642819-fa43-41a5-95f1-afc38c807a91"
+                            UserId = "78493291-f341-4f41-888d-0c88ee2b74d2",
+                            RoleId = "dcdc39d7-ea85-41f2-b4d5-29f5c071f2a3"
                         });
                 });
 

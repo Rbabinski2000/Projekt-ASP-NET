@@ -93,8 +93,7 @@ namespace Data
                 .WithMany(t => t.Travels)
                 .HasForeignKey(g => g.GuideId);
 
-            modelBuilder.Entity<TravelEntity>()
-                .HasKey(t => t.Id);
+            
 
 
             modelBuilder.Entity<GuideEntity>().HasData(

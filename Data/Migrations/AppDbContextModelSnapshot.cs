@@ -102,7 +102,7 @@ namespace Data.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2024, 1, 20, 20, 25, 4, 671, DateTimeKind.Local).AddTicks(9850),
+                            Created = new DateTime(2024, 1, 20, 22, 21, 28, 181, DateTimeKind.Local).AddTicks(5369),
                             EndDate = new DateTime(2012, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndPlace = "Kair",
                             GuideId = 1,
@@ -114,7 +114,7 @@ namespace Data.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2024, 1, 20, 20, 25, 4, 671, DateTimeKind.Local).AddTicks(9900),
+                            Created = new DateTime(2024, 1, 20, 22, 21, 28, 181, DateTimeKind.Local).AddTicks(5421),
                             EndDate = new DateTime(2013, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndPlace = "Egipt",
                             GuideId = 2,
@@ -153,8 +153,8 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e485f291-59e4-4b40-b97c-d41d183675c1",
-                            ConcurrencyStamp = "e485f291-59e4-4b40-b97c-d41d183675c1",
+                            Id = "dcdc39d7-ea85-41f2-b4d5-29f5c071f2a3",
+                            ConcurrencyStamp = "dcdc39d7-ea85-41f2-b4d5-29f5c071f2a3",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -249,17 +249,17 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "bfa0e51b-53ba-4c4f-8eba-76c2f0458c13",
+                            Id = "78493291-f341-4f41-888d-0c88ee2b74d2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b1178067-071d-48aa-bb70-391f90e47bcd",
+                            ConcurrencyStamp = "7f553f87-bdf3-4f3e-bd04-a8b26198a9d0",
                             Email = "adamo@micros.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADAMO@MICROS.COM",
                             NormalizedUserName = "ADAMO",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHP1JuZoLyJVR2XnGrYbosenCzDP+UTwQNb33T53t2gdOWw53jJ+lx6FpE6Frz/3tA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEN1FKvIOa+i8iVmctrE2Kn01orKaVhnbU0nJlhqU7G6qAylRjMTGJabE6X79dnjqQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cbb841e3-5a9a-40b1-9981-74334ab45f0b",
+                            SecurityStamp = "8cb0597e-249f-48ba-ac90-be8d204bdb2c",
                             TwoFactorEnabled = false,
                             UserName = "adamo"
                         });
@@ -327,8 +327,8 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "bfa0e51b-53ba-4c4f-8eba-76c2f0458c13",
-                            RoleId = "e485f291-59e4-4b40-b97c-d41d183675c1"
+                            UserId = "78493291-f341-4f41-888d-0c88ee2b74d2",
+                            RoleId = "dcdc39d7-ea85-41f2-b4d5-29f5c071f2a3"
                         });
                 });
 

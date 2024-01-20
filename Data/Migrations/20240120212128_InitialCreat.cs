@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialCreat : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -206,12 +206,12 @@ namespace Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "8c642819-fa43-41a5-95f1-afc38c807a91", "8c642819-fa43-41a5-95f1-afc38c807a91", "admin", "ADMIN" });
+                values: new object[] { "dcdc39d7-ea85-41f2-b4d5-29f5c071f2a3", "dcdc39d7-ea85-41f2-b4d5-29f5c071f2a3", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "52ac1cfc-dfa3-4b22-84ab-905e6dd31656", 0, "2635914b-5c93-494f-a024-002acd82a8a0", "adamo@micros.com", true, false, null, "ADAMO@MICROS.COM", "ADAMO", "AQAAAAIAAYagAAAAEBKHhgFoB21BHHHp619ibEkUEr/Jy+BnSqAV3G1RORPuHmK7gENSPbN2GLb5z/BvDg==", null, false, "1ebbeaa6-c37c-4c2e-bbe5-b5d6f62fc94e", false, "adamo" });
+                values: new object[] { "78493291-f341-4f41-888d-0c88ee2b74d2", 0, "7f553f87-bdf3-4f3e-bd04-a8b26198a9d0", "adamo@micros.com", true, false, null, "ADAMO@MICROS.COM", "ADAMO", "AQAAAAIAAYagAAAAEEN1FKvIOa+i8iVmctrE2Kn01orKaVhnbU0nJlhqU7G6qAylRjMTGJabE6X79dnjqQ==", null, false, "8cb0597e-249f-48ba-ac90-be8d204bdb2c", false, "adamo" });
 
             migrationBuilder.InsertData(
                 table: "organization",
@@ -225,15 +225,15 @@ namespace Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "8c642819-fa43-41a5-95f1-afc38c807a91", "52ac1cfc-dfa3-4b22-84ab-905e6dd31656" });
+                values: new object[] { "dcdc39d7-ea85-41f2-b4d5-29f5c071f2a3", "78493291-f341-4f41-888d-0c88ee2b74d2" });
 
             migrationBuilder.InsertData(
                 table: "Travels",
                 columns: new[] { "Id", "Created", "EndDate", "EndPlace", "GuideId", "Name", "Participants", "StartDate", "StartPlace" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 1, 20, 18, 32, 41, 538, DateTimeKind.Local).AddTicks(4186), new DateTime(2012, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kair", 1, "Niezapomniana Podróż-Kair", "Kamil,Dawid,Michał", new DateTime(2012, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Warszawa" },
-                    { 2, new DateTime(2024, 1, 20, 18, 32, 41, 538, DateTimeKind.Local).AddTicks(4241), new DateTime(2013, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Egipt", 2, "Niezapomniana Podróż-Egipt", "Kamil,Dawid,Gabryś", new DateTime(2013, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kraków" }
+                    { 1, new DateTime(2024, 1, 20, 22, 21, 28, 181, DateTimeKind.Local).AddTicks(5369), new DateTime(2012, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kair", 1, "Niezapomniana Podróż-Kair", "Kamil,Dawid,Michał", new DateTime(2012, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Warszawa" },
+                    { 2, new DateTime(2024, 1, 20, 22, 21, 28, 181, DateTimeKind.Local).AddTicks(5421), new DateTime(2013, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Egipt", 2, "Niezapomniana Podróż-Egipt", "Kamil,Dawid,Gabryś", new DateTime(2013, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kraków" }
                 });
 
             migrationBuilder.CreateIndex(
