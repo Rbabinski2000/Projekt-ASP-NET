@@ -13,7 +13,7 @@ namespace Projekt_ASP_NET.Interfaces
             void Update(Travel travel);
             public List<Travel> FindAll();
             Travel? FindById(int id);
-            List<TravelEntity> FindAllGuidesForVieModel();
+            List<GuideEntity> FindAllGuidesForVieModel();
         
     }
 }

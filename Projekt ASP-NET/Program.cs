@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Data;
+using Projekt_ASP_NET.Interfaces;
+using Projekt_ASP_NET.Services;
 namespace Projekt_ASP_NET
 {
     public class Program
@@ -8,19 +10,23 @@ namespace Projekt_ASP_NET
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            var connectionString = builder.Configuration.GetConnectionString("AppDbContextConnection") ?? throw new InvalidOperationException("Connection string 'AppDbContextConnection' not found.");
-
+            
             builder.Services.AddRazorPages();
-            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite(connectionString));
+            builder.Services.AddDbContext<AppDbContext>();
+            builder.Services.AddTransient<ITravelService, MemoryTravelService>(); //service
+
             builder.Services.AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
 
-            //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContext>();
+            
             builder.Services.AddMemoryCache();
             builder.Services.AddSession();
-            // Add services to the container.
+
+           
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            //builder.Services.AddSingleton<IContactService, MemoryContactService>();// do service
 
             var app = builder.Build();
 

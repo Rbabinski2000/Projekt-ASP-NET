@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Projekt_ASP_NET.Interfaces;
 using Projekt_ASP_NET.Models;
 using Data;
+using Data.Entities;
+using Projekt_ASP_NET.Mapper;
 
 namespace Projekt_ASP_NET.Services
 {
@@ -18,33 +20,39 @@ namespace Projekt_ASP_NET.Services
 
         public int Add(Travel travel)
         {
-            throw new NotImplementedException();
+            var e = _context.Travels.Add(TravelMapper.ToEntity(travel));
+            _context.SaveChanges();
+            return e.Entity.Id;
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            TravelEntity? find = _context.Travels.Find(id);
+            if (find != null)
+            {
+                _context.Travels.Remove(find);
+            }
         }
 
         public List<Travel> FindAll()
         {
-            throw new NotImplementedException();
+            return _context.Travels.Select(e => TravelMapper.FromEntity(e)).ToList();
         }
 
-        public List<TravelEntity> FindAllGuidesForVieModel()
+        public List<GuideEntity> FindAllGuidesForVieModel()
         {
-            //return _context.Guides.ToList();
-            throw new NotImplementedException();
+            return _context.Guides.ToList();
+            
         }
 
         public Travel? FindById(int id)
         {
-            throw new NotImplementedException();
+            return TravelMapper.FromEntity(_context.Travels.Find(id));
         }
 
         public void Update(Travel travel)
         {
-            throw new NotImplementedException();
+            _context.Travels.Update(TravelMapper.ToEntity(travel));
         }
     }
 }

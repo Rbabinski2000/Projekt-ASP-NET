@@ -37,6 +37,7 @@ namespace Projekt_ASP_NET.Controllers
                  _travels.Add(0,tt);
             }
             return View(_travels.Values.ToList());
+            // return View(_contacts.FindAll());
         }
 
         [HttpGet]
@@ -53,9 +54,10 @@ namespace Projekt_ASP_NET.Controllers
                 model.Id = id+1;
                 model.Created=DateTime.Now;
                 _travels.Add(model.Id, model);
-                
 
+                //_contactService.Add(model);
                 return RedirectToAction("Index");
+                
             }
             else
             {

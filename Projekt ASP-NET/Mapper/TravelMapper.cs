@@ -1,5 +1,6 @@
 ﻿using Data.Entities;
 using Projekt_ASP_NET.Models;
+using Projekt_ASP_NET.Enums;
 
 namespace Projekt_ASP_NET.Mapper
 {
@@ -11,9 +12,13 @@ namespace Projekt_ASP_NET.Mapper
             {
                 Id = entity.Id,
                 Name = entity.Name,
-                Email = entity.Email,
-                Phone = entity.Phone,
-                Birth = entity.Birth,
+                StartDate = entity.StartDate,
+                EndDate = entity.EndDate,
+                StartPlace = entity.StartPlace,
+                EndPlace = entity.EndPlace,
+                Participants = entity.Participants,
+                Guide = (Guides)(entity.GuideId),
+                Created = entity.Created
             };
         }
 
@@ -28,8 +33,8 @@ namespace Projekt_ASP_NET.Mapper
                 StartPlace = model.StartPlace,
                 EndPlace = model.EndPlace,
                 Participants = model.Participants,
-                Guide = model.Guide.,
-                Created = DateTime.Now
+                GuideId = (int)model.Guide,
+                Created = model.Created
             };
         }
     }

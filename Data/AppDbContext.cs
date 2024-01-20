@@ -18,7 +18,10 @@ namespace Data
 
         public AppDbContext()
         {
-            var folder = Path.Combine(Environment.CurrentDirectory, "BazyDanych");
+            var str = Environment.CurrentDirectory;
+            str=str.Substring(0,str.LastIndexOf('\\') + 1);
+            str = str + "Data";
+            var folder = Path.Combine(str, "BazyDanych");
             if (!Directory.Exists(folder))
             {
                 Directory.CreateDirectory(folder);
@@ -29,6 +32,7 @@ namespace Data
        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
             optionsBuilder.UseSqlite($"Data source={DbPath}");
         }
 
