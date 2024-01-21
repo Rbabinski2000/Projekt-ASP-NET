@@ -85,8 +85,6 @@ namespace Data
 
             modelBuilder.Entity<GuideEntity>()
                 .OwnsOne(a => a.Address);
-            modelBuilder.Entity<GuideEntity>()
-                .HasKey(a => a.Id);
 
             modelBuilder.Entity<TravelEntity>()
                 .HasOne(g => g.Guide)

@@ -31,7 +31,7 @@ namespace Data.Entities
         public string Participants { get; set; }
 
         
-        public GuideEntity Guide { get; set; }
+        public GuideEntity? Guide { get; set; }
         [Required]
         public int GuideId {  get; set; }
 

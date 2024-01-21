@@ -37,7 +37,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("organization");
+                    b.ToTable("Guides");
 
                     b.HasData(
                         new
@@ -102,7 +102,7 @@ namespace Data.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2024, 1, 20, 22, 21, 28, 181, DateTimeKind.Local).AddTicks(5369),
+                            Created = new DateTime(2024, 1, 21, 20, 13, 34, 786, DateTimeKind.Local).AddTicks(3815),
                             EndDate = new DateTime(2012, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndPlace = "Kair",
                             GuideId = 1,
@@ -114,7 +114,7 @@ namespace Data.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2024, 1, 20, 22, 21, 28, 181, DateTimeKind.Local).AddTicks(5421),
+                            Created = new DateTime(2024, 1, 21, 20, 13, 34, 786, DateTimeKind.Local).AddTicks(3871),
                             EndDate = new DateTime(2013, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndPlace = "Egipt",
                             GuideId = 2,
@@ -153,8 +153,8 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dcdc39d7-ea85-41f2-b4d5-29f5c071f2a3",
-                            ConcurrencyStamp = "dcdc39d7-ea85-41f2-b4d5-29f5c071f2a3",
+                            Id = "1a615ce2-b678-4d38-a094-d8dc35ba511a",
+                            ConcurrencyStamp = "1a615ce2-b678-4d38-a094-d8dc35ba511a",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -249,17 +249,17 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "78493291-f341-4f41-888d-0c88ee2b74d2",
+                            Id = "7b4bda70-5d38-4fea-8a14-5c165e631806",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7f553f87-bdf3-4f3e-bd04-a8b26198a9d0",
+                            ConcurrencyStamp = "23888f0b-2c07-4244-bb71-444f743ef9a7",
                             Email = "adamo@micros.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADAMO@MICROS.COM",
                             NormalizedUserName = "ADAMO",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEN1FKvIOa+i8iVmctrE2Kn01orKaVhnbU0nJlhqU7G6qAylRjMTGJabE6X79dnjqQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENUwSFUamuX4UGUQUGOGOB6JbEPVkQiJukP3em8CpfcaQJN71SI0z33PQWH4iAnpdw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8cb0597e-249f-48ba-ac90-be8d204bdb2c",
+                            SecurityStamp = "6991da1b-1a86-41a1-afc8-e382f1cc0945",
                             TwoFactorEnabled = false,
                             UserName = "adamo"
                         });
@@ -327,8 +327,8 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "78493291-f341-4f41-888d-0c88ee2b74d2",
-                            RoleId = "dcdc39d7-ea85-41f2-b4d5-29f5c071f2a3"
+                            UserId = "7b4bda70-5d38-4fea-8a14-5c165e631806",
+                            RoleId = "1a615ce2-b678-4d38-a094-d8dc35ba511a"
                         });
                 });
 
@@ -376,7 +376,7 @@ namespace Data.Migrations
 
                             b1.HasKey("GuideEntityId");
 
-                            b1.ToTable("organization");
+                            b1.ToTable("Guides");
 
                             b1.WithOwner()
                                 .HasForeignKey("GuideEntityId");

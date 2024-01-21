@@ -1,5 +1,5 @@
 ﻿@using Projekt_ASP_NET.Enums 
-@model List<Travel>
+@model Task<List<Data.Entities.TravelEntity>>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -20,26 +20,29 @@
             Miejsce rozpoczęcia
         </th>
         <th>
+            Opiekun
+        </th>
+        <th>
             Akcje
         </th>
     </tr>
-    @foreach (var item in @Model)
+    @foreach (var item in @Model.Result)
     {
         <tr>
             <td>
                 @item.Name
             </td>
             <td>
-                @item.StartDate
+                @item.StartDate.ToString().Substring(0, @item.StartDate.ToString().IndexOf(" ")+1)
             </td>
             <td>
-                @item.EndDate
+                @item.EndDate.ToString().Substring(0, @item.StartDate.ToString().IndexOf(" ") + 1)
             </td>
             <td>
                 @item.StartPlace
             </td>
-            <td>
-                @item.Guide.GetDisplayName()
+            <td> 
+                @item.Guide.Name
             </td>
             <td>
                 <a class="btn btn-primary"

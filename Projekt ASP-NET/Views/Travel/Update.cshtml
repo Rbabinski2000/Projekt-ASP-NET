@@ -1,5 +1,5 @@
 ﻿@using Projekt_ASP_NET.Enums
-@model Travel
+@model Data.Entities.TravelEntity
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -37,12 +37,18 @@
         <input class="form-control" asp-for="Participants" />
         <span class="text-danger" asp-validation-for="Participants"></span>
     </div>
-    <div class="mb-3">
+    <div class="form-group">
         <label asp-for="Guide"></label>
-        <select class="form-control" asp-for="Guide" asp-items="@Html.GetEnumSelectList<Guides>()"></select>
+        <select class="form-control" asp-for="GuideId">
+            @foreach (var item in ViewBag.GuideList)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+
+        </select>
         <span class="text-danger" asp-validation-for="Guide"></span>
     </div>
-    <input class="form-control" asp-for="Created" />
+    
 
     <button class="btn btn-primary" type="submit">Zapisz</button>
     <button class="btn btn-primary" type="Reset">Resetuj</button>

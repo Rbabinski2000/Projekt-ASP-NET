@@ -18,41 +18,54 @@ namespace Projekt_ASP_NET.Services
            _context = context; 
         }
 
-        public int Add(Travel travel)
+        public async Task Add(TravelEntity travel)
         {
-            var e = _context.Travels.Add(TravelMapper.ToEntity(travel));
-            _context.SaveChanges();
-            return e.Entity.Id;
+            _context.Travels.Add(travel);
+            await _context.SaveChangesAsync();
+            
+        }
+        public async Task AddGuide(GuideEntity guide)
+        {
+            _context.Guides.Add(guide);
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+            public async Task Delete(int id)
         {
-            TravelEntity? find = _context.Travels.Find(id);
+            TravelEntity? find = await _context.Travels.FindAsync(id);
             if (find != null)
             {
                 _context.Travels.Remove(find);
+                await _context.SaveChangesAsync();
             }
         }
 
-        public List<Travel> FindAll()
+        public async Task<List<TravelEntity>> FindAll()
         {
-            return _context.Travels.Select(e => TravelMapper.FromEntity(e)).ToList();
+            return await _context.Travels
+                .Include(g=>g.Guide)
+                .ToListAsync();
         }
 
-        public List<GuideEntity> FindAllGuidesForVieModel()
+        public async Task<List<GuideEntity>> FindAllGuidesForVieModel()
         {
-            return _context.Guides.ToList();
+            return await _context.Guides.ToListAsync();
             
         }
 
-        public Travel? FindById(int id)
+        public async Task<TravelEntity?> FindById(int id)
         {
-            return TravelMapper.FromEntity(_context.Travels.Find(id));
+
+            var model= await _context.Travels.FindAsync(id);
+            model.Guide= await _context.Guides.FindAsync(model.GuideId);
+            return model;
+
         }
 
-        public void Update(Travel travel)
+        public async Task Update(TravelEntity travel)
         {
-            _context.Travels.Update(TravelMapper.ToEntity(travel));
+            _context.Travels.Update(travel);
+            await _context.SaveChangesAsync();
         }
     }
 }

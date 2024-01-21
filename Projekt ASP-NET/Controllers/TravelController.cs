@@ -4,18 +4,16 @@ using System.Diagnostics;
 using Projekt_ASP_NET.Enums;
 using System;
 using Projekt_ASP_NET.Interfaces;
+using Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Projekt_ASP_NET.Controllers
 {
     public class TravelController : Controller
     {
         private readonly ITravelService _travelService;
-        static Dictionary<int, Travel> _travels = new Dictionary<int, Travel>();
 
-        static DateTime tempD1 = new DateTime(2022, 10, 10);
-        static DateTime tempD2 = new DateTime(2022, 10, 15);
-        static Travel tt = new Travel();
-
+        
         public TravelController(ITravelService travelService)
         {
             _travelService = travelService;
@@ -23,41 +21,25 @@ namespace Projekt_ASP_NET.Controllers
 
         public IActionResult Index()
         {
-            /*if (_travels.Count() == 0)
-            {
-                tt.Id = 0;
-                tt.Name = "Egipt";
-                tt.StartPlace = "Kraków";
-                tt.EndPlace = "Warszawa";
-                tt.StartDate = tempD1;
-                tt.EndDate = tempD2;
-                tt.Participants = "Kamil";
-                tt.Guide = Guides.Grzegorz;
-                tt.Created= DateTime.Now;
-                 _travels.Add(0,tt);
-            }
-            return View(_travels.Values.ToList());*/
             return View(_travelService.FindAll());
         }
 
+
+        //[Authorize(Roles ="Admin")]
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.GuideList = _travelService.FindAllGuidesForVieModel().Result;
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Travel model)
+        public IActionResult Create(TravelEntity model)
         {
             if (ModelState.IsValid)
             {
-                /*int id = _travels.Keys.Count != 0 ? _travels.Keys.Max() : 0;
-                model.Id = id+1;
-                model.Created=DateTime.Now;
-                _travels.Add(model.Id, model);*/
-
+                
                 _travelService.Add(model);
                 return RedirectToAction("Index");
-                
             }
             else
             {
@@ -66,27 +48,24 @@ namespace Projekt_ASP_NET.Controllers
 
         }
 
+        
+
 
 
         [HttpGet]
         public IActionResult Update(int id)
         {
 
-            if (_travels.Keys.Contains(id))
-            {
-                return View(_travels[id]);
-            }
-            else
-            {
-                return NotFound();
-            };
+            ViewBag.GuideList = _travelService.FindAllGuidesForVieModel().Result;
+            return View(_travelService.FindById(id).Result);
+            
         }
         [HttpPost]
-        public IActionResult Update(Travel model)
+        public IActionResult Update(TravelEntity model)
         {
             if (ModelState.IsValid)
             {
-                _travels[model.Id] = model;
+                _travelService.Update(model);
                 return RedirectToAction("Index");
             }
             else
@@ -96,16 +75,16 @@ namespace Projekt_ASP_NET.Controllers
         }
         public IActionResult Details(int id)
         {
-            return View(_travelService.FindById(id));
+            return View(_travelService.FindById(id).Result);
         }
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            return View(_travelService.FindById(id));
+            return View(_travelService.FindById(id).Result);
         }
         [HttpPost]
-        public IActionResult Delete(Travel model)
+        public IActionResult Delete(TravelEntity model)
         {
             _travelService.Delete(model.Id);
             return RedirectToAction("Index");

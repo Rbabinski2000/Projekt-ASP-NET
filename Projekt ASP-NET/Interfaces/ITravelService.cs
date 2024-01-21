@@ -8,12 +8,13 @@ namespace Projekt_ASP_NET.Interfaces
     public interface ITravelService
     {
        
-            public int Add(Travel travel);
-            void Delete(int id);
-            void Update(Travel travel);
-            public List<Travel> FindAll();
-            Travel? FindById(int id);
-            List<GuideEntity> FindAllGuidesForVieModel();
+            public Task Add(TravelEntity travel);
+            public Task AddGuide(GuideEntity guide);
+            public Task Delete(int id);
+            public Task Update(TravelEntity travel);
+            public  Task<List<TravelEntity>> FindAll();
+            Task<TravelEntity?> FindById(int id);
+            Task<List<GuideEntity>> FindAllGuidesForVieModel();
         
     }
 }
