@@ -5,69 +5,60 @@
 *@
 @{
 }
+<div class="container">
+    <h2 class="mt-3">Dodaj nową wycieczkę</h2>
 <form asp-action="Create" asp-controller="Travel" method="post">
     <div asp-validation-summary="All"></div>
 
-    <div class="mb-3">
-        <label asp-for="Name">Nazwa Wycieczki</label>
-        
-        <span asp-validation-for="Name" class="text-danger"></span>
-        
-        <input class="form-control" type="text" asp-for="Name"/>
-    </div>
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Nazwa Wycieczki</label>
+            <input class="form-control" type="text" asp-for="Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
 
-    <div class="mb-3">
-        <label asp-for="StartDate">Data rozpoczęcia wycieczki</label>
-        
-        <span asp-validation-for="StartDate" class="text-danger"></span>
-        
-        <input class="form-control" type="Date" asp-for="StartDate" />
-    </div>
+        <div class="mb-3">
+            <label asp-for="StartDate" class="form-label">Data rozpoczęcia wycieczki</label>
+            <input class="form-control" type="date" asp-for="StartDate" />
+            <span asp-validation-for="StartDate" class="text-danger"></span>
+        </div>
 
-    <div class="mb-3">
-        <label asp-for="EndDate">Data końca wycieczki</label>
-        
-        <span asp-validation-for="EndDate" class="text-danger"></span>
-        
-        <input class="form-control" type="Date" asp-for="EndDate" />
-    </div>
+        <div class="mb-3">
+            <label asp-for="EndDate" class="form-label">Data końca wycieczki</label>
+            <input class="form-control" type="date" asp-for="EndDate" />
+            <span asp-validation-for="EndDate" class="text-danger"></span>
+        </div>
 
-    <div class="mb-3">
-        <label asp-for="StartPlace">Miejsce rozpoczęcia wycieczki</label>
-        
-        <span asp-validation-for="StartPlace" class="text-danger"></span>
-        
-        <input class="form-control" type="text" asp-for="StartPlace" />
-    </div>
+        <div class="mb-3">
+            <label asp-for="StartPlace" class="form-label">Miejsce rozpoczęcia wycieczki</label>
+            <input class="form-control" type="text" asp-for="StartPlace" />
+            <span asp-validation-for="StartPlace" class="text-danger"></span>
+        </div>
 
-    <div class="mb-3">
-        <label asp-for="EndPlace">Miesjce zakonczenia wycieczki</label>
-        
-         <span asp-validation-for="EndPlace" class="text-danger"></span>
-        
-        <input class="form-control" type="text" asp-for="EndPlace" />
-    </div>
+        <div class="mb-3">
+            <label asp-for="EndPlace" class="form-label">Miejsce zakończenia wycieczki</label>
+            <input class="form-control" type="text" asp-for="EndPlace" />
+            <span asp-validation-for="EndPlace" class="text-danger"></span>
+        </div>
 
-    <div class="mb-3">
-        <label asp-for="Participants">Uczestnicy</label>
-
-        <span asp-validation-for="Participants" class="text-danger"></span>
-
-        <input class="form-control" type="text" asp-for="Participants" />
-    </div>
+        <div class="mb-3">
+            <label asp-for="Participants" class="form-label">Uczestnicy</label>
+            <input class="form-control" type="text" asp-for="Participants" />
+            <span asp-validation-for="Participants" class="text-danger"></span>
+        </div>
 
     
-    <div class="form-group">
-        <label asp-for="Guide"></label>
-        <select class="form-control" asp-for="GuideId">
-            @foreach(var item in ViewBag.GuideList)
-            {
-                <option value="@item.Id">@item.Name</option>
-            }
+        <div class="form-group">
+            <label asp-for="Guide"></label>
+            <select class="form-control" asp-for="GuideId">
+                @foreach(var item in ViewBag.GuideList)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
 
-        </select>
-        <span class="text-danger" asp-validation-for="Guide"></span>
-    </div>
+            </select>
+            <span class="text-danger" asp-validation-for="Guide"></span>
+        </div>
     
-    <button type="submit">Dodaj</button>
+        <button type="submit" class="btn btn-primary">Dodaj</button>
 </form>
+</div>

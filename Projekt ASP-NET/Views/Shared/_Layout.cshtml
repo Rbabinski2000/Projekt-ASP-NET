@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ASPPROJEKT.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body class="d-flex flex-column bodies">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 navbary">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Travel" asp-action="Index">ASPPROJEKT</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Welcome">ASPPROJEKT</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,25 +22,40 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Travel" asp-action="Index">Lista wycieczek</a>
                         </li>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Travel" asp-action="Create">CreateTravel</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("admin"))
+                        {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Travel" asp-action="Create">Create</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Guide" asp-action="IndexGuide">Lista Opiekunów</a>
                         </li>
-                        <partial name="_LoginPartial" />
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Guide" asp-action="CreateGuide">CreateGuide</a>
+                        </li>
+                        }
+                        <div class="ms-auto">
+                            <partial name="_LoginPartial" />
+                        </div>
                         
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container mainik">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted colorFoot">
         <div class="container">
-            &copy; 2024 - ASPPROJEKT - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - ASPPROJEKT - Radosław Babiński
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

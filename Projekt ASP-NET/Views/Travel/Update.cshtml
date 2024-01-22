@@ -48,9 +48,17 @@
         </select>
         <span class="text-danger" asp-validation-for="Guide"></span>
     </div>
-    
+    <input type="hidden" asp-for="Created" />
 
-    <button class="btn btn-primary" type="submit">Zapisz</button>
-    <button class="btn btn-primary" type="Reset">Resetuj</button>
+    <div class="d-flex justify-content-between">
+        <div>
+            <button class="btn btn-primary" type="submit">Zapisz</button>
+            <button class="btn btn-primary" type="reset">Resetuj</button>
+        </div>
+        <div class="back-link">
+            <a asp-controller="Travel" asp-action="Index" class="btn btn-primary">Powrót do listy wycieczek</a>
+        </div>
+    </div>
+    
 </form>
 

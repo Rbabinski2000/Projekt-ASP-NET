@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Data;
 using Projekt_ASP_NET.Interfaces;
 using Projekt_ASP_NET.Services;
+using Projekt_ASP_NET.Models;
 namespace Projekt_ASP_NET
 {
     public class Program
@@ -14,7 +15,7 @@ namespace Projekt_ASP_NET
             builder.Services.AddRazorPages();
             builder.Services.AddDbContext<AppDbContext>();
             builder.Services.AddTransient<ITravelService, MemoryTravelService>(); //service
-
+            builder.Services.AddTransient<IGuideService, MemoryGuideService>();
             builder.Services.AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
@@ -42,7 +43,7 @@ namespace Projekt_ASP_NET
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseMiddleware<LastVisitCookie>();
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseSession();
@@ -50,7 +51,7 @@ namespace Projekt_ASP_NET
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Travel}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Welcome}/{id?}");
 
             app.Run();
         }

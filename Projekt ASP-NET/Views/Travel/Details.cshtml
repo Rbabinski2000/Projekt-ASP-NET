@@ -1,51 +1,35 @@
 ﻿@model Data.Entities.TravelEntity
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
 
-<h2>Detale Opiekuna @Model.Id</h2>
-<table class="table">
-    <tr>
-        <th>
-            Imię
-        </th>
-        <th>
-            Data rozpoczęcia
-        </th>
-        <th>
-            Data zakończenia
-        </th>
-        <th>
-            Miejsce rozpoczęcia
-        </th>
-        <th>
-            Miejsce zakończenia
-        </th>
-        <th>
-            Uczestnicy
-        </th>
-        <th>
-            Przewodnik
-        </th>
-        <th>
-            Time of Creation
-        </th>
-    </tr>
-        <tr>
-            <td>
-                @Model.Name
-            </td>
-            <td>
-                @Model.StartDate
-            </td>
-            <td>@Model.EndDate</td>
-            <td>@Model.StartPlace</td>
-            <td>@Model.EndPlace</td>
-            <td>@Model.Participants</td>
-            <td>@Model.Guide.Name </td>
-            <td>@Model.Created</td>
-        </tr>
-</table>
-<a asp-controller="Travel" asp-action="Index">Powrót</a>
+<h2>Detale wycieczki o ID: @Model.Id</h2>
+
+<div class="details-container">
+    <dl class="dl-horizontal">
+        <dt>Nazwa:</dt>
+        <dd>@Model.Name</dd>
+
+        <dt>Data rozpoczęcia:</dt>
+        <dd>@Model.StartDate.Value.ToString("yyyy-MM-dd")</dd>
+
+        <dt>Data zakończenia:</dt>
+        <dd>@Model.EndDate.Value.ToString("yyyy-MM-dd")</dd>
+
+        <dt>Miejsce rozpoczęcia:</dt>
+        <dd>@Model.StartPlace</dd>
+
+        <dt>Miejsce zakończenia:</dt>
+        <dd>@Model.EndPlace</dd>
+
+        <dt>Uczestnicy:</dt>
+        <dd>@Model.Participants</dd>
+
+        <dt>Przewodnik:</dt>
+        <dd>@Model.Guide.Name</dd>
+
+        <dt>Data utworzenia:</dt>
+        <dd>@Model.Created.ToString("MMMM dd, yyyy HH:mm:ss")</dd>
+    </dl>
+</div>
+
+<div class="back-link">
+    <a asp-controller="Travel" asp-action="Index" class="btn btn-primary">Powrót do listy wycieczek</a>
+</div>

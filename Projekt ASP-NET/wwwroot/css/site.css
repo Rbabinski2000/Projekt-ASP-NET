@@ -18,5 +18,48 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-image:url(../Pictures/pix.jpg);
+}
+.bodies {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100% !important;
+    height:100% !important;
+}
+.btn-details {
+    background-color: #007bff; /* Blue */
+    border-color: #007bff;
+}
+
+.btn-delete {
+    background-color: #dc3545; /* Red */
+    border-color: #dc3545;
+}
+
+.btn-update {
+    background-color: #28a745; /* Green */
+    border-color: #28a745;
+}
+
+.footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    white-space:nowrap;
+    line-height:60px;
+    border:0;
+}
+.colorFoot{
+    background-color:#838383;
+    color:white !important;
+}
+.mainik {
+    
+    
+    
+    padding-top: 16px !important;
+}
+.navbary{
+    margin-bottom:0 !important;
 }

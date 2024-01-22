@@ -19,19 +19,21 @@ namespace Projekt_ASP_NET.Controllers
             _travelService = travelService;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View(_travelService.FindAll());
         }
 
 
-        //[Authorize(Roles ="Admin")]
+        [Authorize(Roles ="admin")]
         [HttpGet]
         public IActionResult Create()
         {
             ViewBag.GuideList = _travelService.FindAllGuidesForVieModel().Result;
             return View();
         }
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult Create(TravelEntity model)
         {
@@ -48,10 +50,7 @@ namespace Projekt_ASP_NET.Controllers
 
         }
 
-        
-
-
-
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -60,6 +59,7 @@ namespace Projekt_ASP_NET.Controllers
             return View(_travelService.FindById(id).Result);
             
         }
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult Update(TravelEntity model)
         {
@@ -73,16 +73,20 @@ namespace Projekt_ASP_NET.Controllers
                 return View(model);
             }
         }
+
+        [AllowAnonymous]
         public IActionResult Details(int id)
         {
             return View(_travelService.FindById(id).Result);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult Delete(int id)
         {
             return View(_travelService.FindById(id).Result);
         }
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult Delete(TravelEntity model)
         {

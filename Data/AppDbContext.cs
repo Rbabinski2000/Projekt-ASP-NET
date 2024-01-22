@@ -15,6 +15,7 @@ namespace Data
         private string DbPath { get; set; }
         public DbSet<TravelEntity> Travels { get; set; }
         public DbSet<GuideEntity> Guides { get; set; }
+        public DbSet<AddressEntity> Address { get; set; }
 
         public AppDbContext()
         {
@@ -66,11 +67,19 @@ namespace Data
                 Name = "admin",
                 NormalizedName = "ADMIN"
             };
+            var userRole = new IdentityRole()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "user",
+                NormalizedName = "USER"
+            };
             adminRole.ConcurrencyStamp = adminRole.Id;
+            userRole.ConcurrencyStamp= userRole.Id;
 
             modelBuilder.Entity<IdentityRole>()
                 .HasData(
-                    adminRole
+                    adminRole,
+                    userRole
                 );
 
             modelBuilder.Entity<IdentityUserRole<string>>()
@@ -84,15 +93,21 @@ namespace Data
             
 
             modelBuilder.Entity<GuideEntity>()
-                .OwnsOne(a => a.Address);
+                .HasOne(a => a.Address)
+                .WithMany(g=>g.GuideList)
+                .HasForeignKey(g=>g.AddressId);
 
             modelBuilder.Entity<TravelEntity>()
                 .HasOne(g => g.Guide)
                 .WithMany(t => t.Travels)
                 .HasForeignKey(g => g.GuideId);
 
-            
 
+            modelBuilder.Entity<AddressEntity>()
+               .HasData(
+                   new AddressEntity{ Id = 1, City = "Kraków", Street = "Św. Filipa 17", PostalCode = "31-150", Region = "małopolskie" },
+                   new AddressEntity{ Id = 2, City = "Kraków", Street = "Krowoderska 45/6", PostalCode = "31-150", Region = "małopolskie" }
+               );
 
             modelBuilder.Entity<GuideEntity>().HasData(
                  new GuideEntity()
@@ -101,6 +116,7 @@ namespace Data
                      Name = "Grzegorz",
                      Surname = "Drewniak",
                      Pesel = "13424234123",
+                     AddressId = 1,
                      
                  },
                  new GuideEntity()
@@ -109,6 +125,7 @@ namespace Data
                      Name = "Tomasz",
                      Surname = "Drewniak",
                      Pesel = "13424234567",
+                     AddressId = 1,
                  }
              ); ;
             modelBuilder.Entity<TravelEntity>().HasData(
@@ -137,12 +154,7 @@ namespace Data
                    Created = DateTime.Now
                }
            );
-            modelBuilder.Entity<GuideEntity>()
-               .OwnsOne(e => e.Address)
-               .HasData(
-                   new { GuideEntityId = 1, City = "Kraków", Street = "Św. Filipa 17", PostalCode = "31-150", Region = "małopolskie" },
-                   new { GuideEntityId = 2, City = "Kraków", Street = "Krowoderska 45/6", PostalCode = "31-150", Region = "małopolskie" }
-               );
+            
         }
 
         

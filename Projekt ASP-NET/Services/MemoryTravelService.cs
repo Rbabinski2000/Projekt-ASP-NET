@@ -4,7 +4,6 @@ using Projekt_ASP_NET.Interfaces;
 using Projekt_ASP_NET.Models;
 using Data;
 using Data.Entities;
-using Projekt_ASP_NET.Mapper;
 
 namespace Projekt_ASP_NET.Services
 {
@@ -24,13 +23,8 @@ namespace Projekt_ASP_NET.Services
             await _context.SaveChangesAsync();
             
         }
-        public async Task AddGuide(GuideEntity guide)
-        {
-            _context.Guides.Add(guide);
-            await _context.SaveChangesAsync();
-        }
 
-            public async Task Delete(int id)
+        public async Task Delete(int id)
         {
             TravelEntity? find = await _context.Travels.FindAsync(id);
             if (find != null)
@@ -52,6 +46,7 @@ namespace Projekt_ASP_NET.Services
             return await _context.Guides.ToListAsync();
             
         }
+        
 
         public async Task<TravelEntity?> FindById(int id)
         {

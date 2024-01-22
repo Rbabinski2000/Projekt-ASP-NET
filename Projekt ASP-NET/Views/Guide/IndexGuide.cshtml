@@ -1,5 +1,5 @@
-﻿@using Projekt_ASP_NET.Enums
-@model Task<List<Data.Entities.TravelEntity>>
+﻿@using Projekt_ASP_NET.Enums 
+@model Task<List<Data.Entities.GuideEntity>>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -11,17 +11,15 @@
             Imię
         </th>
         <th>
-            Data rozpoczęcia
+            Nazwisko
         </th>
         <th>
-            Data zakończenia
+            Pesel
         </th>
         <th>
-            Miejsce rozpoczęcia
+            Adres
         </th>
-        <th>
-            Opiekun
-        </th>
+        
         <th>
             Akcje
         </th>
@@ -33,29 +31,27 @@
                 @item.Name
             </td>
             <td>
-                @item.StartDate.Value.ToString("yyyy-MM-dd")
+                @item.Surname
             </td>
             <td>
-                @item.EndDate.Value.ToString("yyyy-MM-dd")
+                @item.Pesel
             </td>
             <td>
-                @item.StartPlace
+                @item.Address.City @item.Address.Street
             </td>
-            <td>
-                @item.Guide.Name
-            </td>
+           
             <td>
                 <a class="btn btn-primary btn-details"
                    asp-action="Details"
-                   asp-controller="Travel"
+                   asp-controller="Guide"
                    asp-route-id=@item.Id>Szczegóły</a>
                 <a class="btn btn-success btn-update"
                    asp-action="Update"
-                   asp-controller="Travel"
+                   asp-controller="Guide"
                    asp-route-id=@item.Id>Edytuj</a>
                 <a class="btn btn-danger btn-delete"
                    asp-action="Delete"
-                   asp-controller="Travel"
+                   asp-controller="Guide"
                    asp-route-id=@item.Id>Usuń</a>
             </td>
         </tr>

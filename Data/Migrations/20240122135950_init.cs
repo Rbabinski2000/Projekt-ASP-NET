@@ -14,6 +14,22 @@ namespace Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Address",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    City = table.Column<string>(type: "TEXT", nullable: false),
+                    Street = table.Column<string>(type: "TEXT", nullable: false),
+                    PostalCode = table.Column<string>(type: "TEXT", nullable: false),
+                    Region = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Address", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -61,14 +77,17 @@ namespace Data.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Surname = table.Column<string>(type: "TEXT", nullable: false),
                     Pesel = table.Column<string>(type: "TEXT", nullable: false),
-                    Address_City = table.Column<string>(type: "TEXT", nullable: true),
-                    Address_Street = table.Column<string>(type: "TEXT", nullable: true),
-                    Address_PostalCode = table.Column<string>(type: "TEXT", nullable: true),
-                    Address_Region = table.Column<string>(type: "TEXT", nullable: true)
+                    AddressId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Guides", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Guides_Address_AddressId",
+                        column: x => x.AddressId,
+                        principalTable: "Address",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -204,36 +223,45 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Address",
+                columns: new[] { "Id", "City", "PostalCode", "Region", "Street" },
+                values: new object[,]
+                {
+                    { 1, "Kraków", "31-150", "małopolskie", "Św. Filipa 17" },
+                    { 2, "Kraków", "31-150", "małopolskie", "Krowoderska 45/6" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1a615ce2-b678-4d38-a094-d8dc35ba511a", "1a615ce2-b678-4d38-a094-d8dc35ba511a", "admin", "ADMIN" });
+                values: new object[] { "68ab30dc-bfe1-4202-be84-5bc9d4d32bbf", "68ab30dc-bfe1-4202-be84-5bc9d4d32bbf", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "7b4bda70-5d38-4fea-8a14-5c165e631806", 0, "23888f0b-2c07-4244-bb71-444f743ef9a7", "adamo@micros.com", true, false, null, "ADAMO@MICROS.COM", "ADAMO", "AQAAAAIAAYagAAAAENUwSFUamuX4UGUQUGOGOB6JbEPVkQiJukP3em8CpfcaQJN71SI0z33PQWH4iAnpdw==", null, false, "6991da1b-1a86-41a1-afc8-e382f1cc0945", false, "adamo" });
-
-            migrationBuilder.InsertData(
-                table: "Guides",
-                columns: new[] { "Id", "Name", "Pesel", "Surname", "Address_City", "Address_PostalCode", "Address_Region", "Address_Street" },
-                values: new object[,]
-                {
-                    { 1, "Grzegorz", "13424234123", "Drewniak", "Kraków", "31-150", "małopolskie", "Św. Filipa 17" },
-                    { 2, "Tomasz", "13424234567", "Drewniak", "Kraków", "31-150", "małopolskie", "Krowoderska 45/6" }
-                });
+                values: new object[] { "2e32c241-af4f-40a0-9d8a-3c05ae8c884e", 0, "5ae8affa-f3df-415e-bb3a-cf39a8b83be4", "adamo@micros.com", true, false, null, "ADAMO@MICROS.COM", "ADAMO", "AQAAAAIAAYagAAAAEFX/mCgRyRNl+PTzEDvMImuTRfuYGAQTre2qwLeU4i90wStDXwnMXh9imob4dg/+qA==", null, false, "8e35afd6-980f-4cca-a687-c3e1b68a26d5", false, "adamo" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "1a615ce2-b678-4d38-a094-d8dc35ba511a", "7b4bda70-5d38-4fea-8a14-5c165e631806" });
+                values: new object[] { "68ab30dc-bfe1-4202-be84-5bc9d4d32bbf", "2e32c241-af4f-40a0-9d8a-3c05ae8c884e" });
+
+            migrationBuilder.InsertData(
+                table: "Guides",
+                columns: new[] { "Id", "AddressId", "Name", "Pesel", "Surname" },
+                values: new object[,]
+                {
+                    { 1, 1, "Grzegorz", "13424234123", "Drewniak" },
+                    { 2, 1, "Tomasz", "13424234567", "Drewniak" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Travels",
                 columns: new[] { "Id", "Created", "EndDate", "EndPlace", "GuideId", "Name", "Participants", "StartDate", "StartPlace" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 1, 21, 20, 13, 34, 786, DateTimeKind.Local).AddTicks(3815), new DateTime(2012, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kair", 1, "Niezapomniana Podróż-Kair", "Kamil,Dawid,Michał", new DateTime(2012, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Warszawa" },
-                    { 2, new DateTime(2024, 1, 21, 20, 13, 34, 786, DateTimeKind.Local).AddTicks(3871), new DateTime(2013, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Egipt", 2, "Niezapomniana Podróż-Egipt", "Kamil,Dawid,Gabryś", new DateTime(2013, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kraków" }
+                    { 1, new DateTime(2024, 1, 22, 14, 59, 50, 102, DateTimeKind.Local).AddTicks(7593), new DateTime(2012, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kair", 1, "Niezapomniana Podróż-Kair", "Kamil,Dawid,Michał", new DateTime(2012, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Warszawa" },
+                    { 2, new DateTime(2024, 1, 22, 14, 59, 50, 102, DateTimeKind.Local).AddTicks(7650), new DateTime(2013, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Egipt", 2, "Niezapomniana Podróż-Egipt", "Kamil,Dawid,Gabryś", new DateTime(2013, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kraków" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -274,6 +302,11 @@ namespace Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Guides_AddressId",
+                table: "Guides",
+                column: "AddressId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Travels_GuideId",
                 table: "Travels",
                 column: "GuideId");
@@ -308,6 +341,9 @@ namespace Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Guides");
+
+            migrationBuilder.DropTable(
+                name: "Address");
         }
     }
 }

@@ -1,0 +1,46 @@
+﻿@using Projekt_ASP_NET.Enums
+@model Data.Entities.GuideEntity
+@{
+}
+<div class="container mt-5">
+    <h2>Dodaj nowego opiekuna</h2>
+    <form asp-action="CreateGuide" asp-controller="Guide" method="post">
+        <div asp-validation-summary="All"></div>
+
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Imię</label>
+            <input class="form-control" type="text" asp-for="Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Surname" class="form-label">Nazwisko</label>
+            <input class="form-control" type="text" asp-for="Surname" />
+            <span asp-validation-for="Surname" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Pesel" class="form-label">Pesel</label>
+            <input class="form-control" type="text" asp-for="Pesel" />
+            <span asp-validation-for="Pesel" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Address">Address</label>
+            <select class="form-control" asp-for="AddressId">
+                @foreach (var item in ViewBag.AddressList)
+                {
+                    <option value="@item.Id">@item.City @item.Street</option>
+                }
+            </select>
+            <span class="text-danger" asp-validation-for="Address"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Dodaj Opiekuna</button>
+        <a href="@Url.Action("CreateAddress", "Address")" class="btn btn-secondary">Stwórz nowy adres</a>
+    </form>
+</div>
+
+
+

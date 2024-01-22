@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240121191334_init")]
+    [Migration("20240122135950_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -20,10 +20,58 @@ namespace Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.15");
 
+            modelBuilder.Entity("Data.Entities.AddressEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Region")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Street")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Address");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            City = "Kraków",
+                            PostalCode = "31-150",
+                            Region = "małopolskie",
+                            Street = "Św. Filipa 17"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            City = "Kraków",
+                            PostalCode = "31-150",
+                            Region = "małopolskie",
+                            Street = "Krowoderska 45/6"
+                        });
+                });
+
             modelBuilder.Entity("Data.Entities.GuideEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AddressId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -40,12 +88,15 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AddressId");
+
                     b.ToTable("Guides");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            AddressId = 1,
                             Name = "Grzegorz",
                             Pesel = "13424234123",
                             Surname = "Drewniak"
@@ -53,6 +104,7 @@ namespace Data.Migrations
                         new
                         {
                             Id = 2,
+                            AddressId = 1,
                             Name = "Tomasz",
                             Pesel = "13424234567",
                             Surname = "Drewniak"
@@ -105,7 +157,7 @@ namespace Data.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2024, 1, 21, 20, 13, 34, 786, DateTimeKind.Local).AddTicks(3815),
+                            Created = new DateTime(2024, 1, 22, 14, 59, 50, 102, DateTimeKind.Local).AddTicks(7593),
                             EndDate = new DateTime(2012, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndPlace = "Kair",
                             GuideId = 1,
@@ -117,7 +169,7 @@ namespace Data.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2024, 1, 21, 20, 13, 34, 786, DateTimeKind.Local).AddTicks(3871),
+                            Created = new DateTime(2024, 1, 22, 14, 59, 50, 102, DateTimeKind.Local).AddTicks(7650),
                             EndDate = new DateTime(2013, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndPlace = "Egipt",
                             GuideId = 2,
@@ -156,8 +208,8 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1a615ce2-b678-4d38-a094-d8dc35ba511a",
-                            ConcurrencyStamp = "1a615ce2-b678-4d38-a094-d8dc35ba511a",
+                            Id = "68ab30dc-bfe1-4202-be84-5bc9d4d32bbf",
+                            ConcurrencyStamp = "68ab30dc-bfe1-4202-be84-5bc9d4d32bbf",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -252,17 +304,17 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7b4bda70-5d38-4fea-8a14-5c165e631806",
+                            Id = "2e32c241-af4f-40a0-9d8a-3c05ae8c884e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "23888f0b-2c07-4244-bb71-444f743ef9a7",
+                            ConcurrencyStamp = "5ae8affa-f3df-415e-bb3a-cf39a8b83be4",
                             Email = "adamo@micros.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADAMO@MICROS.COM",
                             NormalizedUserName = "ADAMO",
-                            PasswordHash = "AQAAAAIAAYagAAAAENUwSFUamuX4UGUQUGOGOB6JbEPVkQiJukP3em8CpfcaQJN71SI0z33PQWH4iAnpdw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFX/mCgRyRNl+PTzEDvMImuTRfuYGAQTre2qwLeU4i90wStDXwnMXh9imob4dg/+qA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6991da1b-1a86-41a1-afc8-e382f1cc0945",
+                            SecurityStamp = "8e35afd6-980f-4cca-a687-c3e1b68a26d5",
                             TwoFactorEnabled = false,
                             UserName = "adamo"
                         });
@@ -330,8 +382,8 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "7b4bda70-5d38-4fea-8a14-5c165e631806",
-                            RoleId = "1a615ce2-b678-4d38-a094-d8dc35ba511a"
+                            UserId = "2e32c241-af4f-40a0-9d8a-3c05ae8c884e",
+                            RoleId = "68ab30dc-bfe1-4202-be84-5bc9d4d32bbf"
                         });
                 });
 
@@ -356,52 +408,11 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Entities.GuideEntity", b =>
                 {
-                    b.OwnsOne("Data.Models.Address", "Address", b1 =>
-                        {
-                            b1.Property<int>("GuideEntityId")
-                                .HasColumnType("INTEGER");
-
-                            b1.Property<string>("City")
-                                .IsRequired()
-                                .HasColumnType("TEXT");
-
-                            b1.Property<string>("PostalCode")
-                                .IsRequired()
-                                .HasColumnType("TEXT");
-
-                            b1.Property<string>("Region")
-                                .IsRequired()
-                                .HasColumnType("TEXT");
-
-                            b1.Property<string>("Street")
-                                .IsRequired()
-                                .HasColumnType("TEXT");
-
-                            b1.HasKey("GuideEntityId");
-
-                            b1.ToTable("Guides");
-
-                            b1.WithOwner()
-                                .HasForeignKey("GuideEntityId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    GuideEntityId = 1,
-                                    City = "Kraków",
-                                    PostalCode = "31-150",
-                                    Region = "małopolskie",
-                                    Street = "Św. Filipa 17"
-                                },
-                                new
-                                {
-                                    GuideEntityId = 2,
-                                    City = "Kraków",
-                                    PostalCode = "31-150",
-                                    Region = "małopolskie",
-                                    Street = "Krowoderska 45/6"
-                                });
-                        });
+                    b.HasOne("Data.Entities.AddressEntity", "Address")
+                        .WithMany("GuideList")
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Address");
                 });
@@ -466,6 +477,11 @@ namespace Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Data.Entities.AddressEntity", b =>
+                {
+                    b.Navigation("GuideList");
                 });
 
             modelBuilder.Entity("Data.Entities.GuideEntity", b =>
