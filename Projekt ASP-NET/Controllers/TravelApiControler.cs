@@ -1,4 +1,5 @@
 ﻿using Data;
+using Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Projekt_ASP_NET.Controllers
@@ -13,14 +14,27 @@ namespace Projekt_ASP_NET.Controllers
         {
             _context = context;
         }
-
-        [HttpGet]
+        
+        [HttpGet("GetFiltered")]
         public IActionResult GetFiltered(string filter)
         {
-            return Ok(_context.Travels
-                .Where(o => o.Name.StartsWith(filter))
-                .Select(o => new { o.Name, o.Id })
-                .ToList());
+            filter = filter.ToLower();
+            if (filter=="null")
+            {
+                
+                var filteredGuides = _context.Guides
+                    .ToList();
+
+                return Ok(filteredGuides);
+            }
+            else
+            {
+                var filteredGuides = _context.Guides
+                    .Where(g => g.Name.ToLower().StartsWith(filter))
+                    .ToList();
+
+                return Ok(filteredGuides);
+            }
         }
     }
 }

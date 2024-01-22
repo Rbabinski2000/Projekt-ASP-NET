@@ -55,11 +55,24 @@ body {
     color:white !important;
 }
 .mainik {
-    
-    
-    
     padding-top: 16px !important;
 }
 .navbary{
     margin-bottom:0 !important;
+}
+.tabela{
+    background-color:white;
+    border:0;
+    padding-bottom:16px;
+}
+.table td{
+    border:1px solid black;
+}
+.table th{
+    text-align:center;
+    border:0;
+}
+.table th a{
+    float:left;
+
 }

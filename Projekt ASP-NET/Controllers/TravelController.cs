@@ -24,7 +24,12 @@ namespace Projekt_ASP_NET.Controllers
         {
             return View(_travelService.FindAll());
         }
-
+        [HttpGet]
+        public IActionResult CreateApi()
+        {
+            ViewBag.GuideList = _travelService.FindAllGuidesForVieModel().Result;
+            return View();
+        }
 
         [Authorize(Roles ="admin")]
         [HttpGet]
@@ -99,5 +104,6 @@ namespace Projekt_ASP_NET.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        
     }
 }

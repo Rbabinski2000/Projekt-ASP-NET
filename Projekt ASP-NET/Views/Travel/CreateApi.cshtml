@@ -7,7 +7,7 @@
 }
 <div class="container tabela">
     <h2 class="mt-3">Dodaj nową wycieczkę</h2>
-<form asp-action="Create" asp-controller="Travel" method="post">
+<form asp-action="CreateApi" asp-controller="Travel" method="post">
     <div asp-validation-summary="All"></div>
 
         <div class="mb-3">
@@ -49,17 +49,53 @@
     
         <div class="form-group">
             <label asp-for="Guide"></label>
-            <select class="form-control" asp-for="GuideId">
-                @foreach(var item in ViewBag.GuideList)
-                {
-                    <option value="@item.Id">@item.Name</option>
-                }
-
-            </select>
             <span class="text-danger" asp-validation-for="Guide"></span>
-            
+            <label for="filter">Filtr organizacji</label>
+            <input class="form-control mb-3" type="text"  name="filter" id="filter" />
+            <select class="form-control mb-3" asp-for="GuideId"></select>
         </div>
     
         <button type="submit" class="btn btn-primary">Dodaj</button>
 </form>
 </div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" ></script>
+    <script>
+        let select = document.getElementById("GuideId");
+        let filter = document.getElementById("filter");
+        let pusty = "null";
+        function updateGuideList() {
+            
+            let currentFilter = filter.value.trim();
+            if (filter.value == "") {
+                currentFilter = pusty;
+            }
+            fetch(`/api/Travel/GetFiltered?filter=${currentFilter}`)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw "no ok, status " + response.status;
+                })
+                .then(json => {
+                    select.innerHTML = '';
+                    for (let item of json) {
+                        let option = document.createElement('option');
+                        option.setAttribute('value', item.id);
+                        option.textContent= item.name;
+                        select.appendChild(option);
+                    }
+                })
+                .catch(e => {
+                    console.log('cant get data from api', e);
+                });
+        }
+
+        // Wywołanie funkcji przy załadowaniu strony
+        updateGuideList();
+
+        // Dodanie obsługi zdarzenia dla zmiany wartości w polu filter
+        filter.addEventListener('input', updateGuideList);
+</script>
+}-->
