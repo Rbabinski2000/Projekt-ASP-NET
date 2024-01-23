@@ -236,8 +236,8 @@ namespace Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "01324ace-6317-45fd-9e8c-28864d7742d1", "01324ace-6317-45fd-9e8c-28864d7742d1", "admin", "ADMIN" },
-                    { "d267df56-4fb0-4e2d-8fa7-65154ec03fbc", "d267df56-4fb0-4e2d-8fa7-65154ec03fbc", "user", "USER" }
+                    { "5b6e5ee3-3736-4896-9f90-1bf5237f1e79", "5b6e5ee3-3736-4896-9f90-1bf5237f1e79", "admin", "ADMIN" },
+                    { "bcafdef0-4dea-457f-9183-df65ac51ed71", "bcafdef0-4dea-457f-9183-df65ac51ed71", "user", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -245,8 +245,8 @@ namespace Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "0df47deb-ed1b-4ec5-a0bf-ca299f82adfe", 0, "5237de2f-a67b-40ab-a90f-2604e6f177da", "adamo@micros.com", true, false, null, "ADAMO@MICROS.COM", "ADAMO", "AQAAAAIAAYagAAAAEOdnoC5va+AC2S20q9sm1NKNl2/qBF2GK3uVb5qEL+IZ1teFsQ/crm/lMfftSOv5Zw==", null, false, "48b86740-5c52-40ed-93c5-ea796a2e53a4", false, "adamo" },
-                    { "49510d7f-3698-48b0-8064-ffd9fd04f35d", 0, "d72cbcb5-63b9-4ffa-a646-364b3b84b3bf", "user@microsoft.com", true, false, null, "USER@MICROSOFT.COM", "USER", null, null, false, "98015b91-049d-48f5-8c68-20e0f91d9432", false, "user" }
+                    { "4eb44fb9-d40c-41a1-9025-c3ca85e6ab58", 0, "0ee7f38a-be2e-4736-943a-b4f13eaf5954", "user@microsoft.com", true, false, null, "USER@MICROSOFT.COM", "USER", "AQAAAAIAAYagAAAAEFg0FGksIIgqZEKBnjIZ/Npp9ga4LKItyzeb4fDXsyclHoxi/LYY2pLK8cYJKbBJsA==", null, false, "c2a57fa5-370e-42cc-8355-56063c3ee0f7", false, "user" },
+                    { "60e20ac4-7f9b-4e2a-92b2-00c78de9722f", 0, "9b20389c-8448-483e-96c3-91aa7c057248", "adamo@micros.com", true, false, null, "ADAMO@MICROS.COM", "ADAMO", "AQAAAAIAAYagAAAAEFccS18aLABmlPZjcjYsLRpiKNEnKuvw9JxS7F2zAVUjKsXImRj/uGzubUH5l/FoVg==", null, false, "0ea0b838-2880-4790-8006-bfcf40f41197", false, "adamo" }
                 });
 
             migrationBuilder.InsertData(
@@ -254,8 +254,8 @@ namespace Data.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "01324ace-6317-45fd-9e8c-28864d7742d1", "0df47deb-ed1b-4ec5-a0bf-ca299f82adfe" },
-                    { "d267df56-4fb0-4e2d-8fa7-65154ec03fbc", "49510d7f-3698-48b0-8064-ffd9fd04f35d" }
+                    { "bcafdef0-4dea-457f-9183-df65ac51ed71", "4eb44fb9-d40c-41a1-9025-c3ca85e6ab58" },
+                    { "5b6e5ee3-3736-4896-9f90-1bf5237f1e79", "60e20ac4-7f9b-4e2a-92b2-00c78de9722f" }
                 });
 
             migrationBuilder.InsertData(
@@ -272,8 +272,8 @@ namespace Data.Migrations
                 columns: new[] { "Id", "Created", "EndDate", "EndPlace", "GuideId", "Name", "Participants", "StartDate", "StartPlace" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 1, 23, 19, 41, 29, 671, DateTimeKind.Local).AddTicks(4637), new DateTime(2012, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kair", 1, "Niezapomniana Podróż-Kair", "Kamil,Dawid,Michał", new DateTime(2012, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Warszawa" },
-                    { 2, new DateTime(2024, 1, 23, 19, 41, 29, 671, DateTimeKind.Local).AddTicks(4688), new DateTime(2013, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Egipt", 2, "Niezapomniana Podróż-Egipt", "Kamil,Dawid,Gabryś", new DateTime(2013, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kraków" }
+                    { 1, new DateTime(2024, 1, 23, 21, 33, 18, 552, DateTimeKind.Local).AddTicks(5265), new DateTime(2012, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kair", 1, "Niezapomniana Podróż-Kair", "Kamil,Dawid,Michał", new DateTime(2012, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Warszawa" },
+                    { 2, new DateTime(2024, 1, 23, 21, 33, 18, 552, DateTimeKind.Local).AddTicks(5320), new DateTime(2013, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Egipt", 2, "Niezapomniana Podróż-Egipt", "Kamil,Dawid,Gabryś", new DateTime(2013, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kraków" }
                 });
 
             migrationBuilder.CreateIndex(

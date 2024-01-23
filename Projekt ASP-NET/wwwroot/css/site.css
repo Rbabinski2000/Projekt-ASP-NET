@@ -51,14 +51,15 @@ body {
     border:0;
 }
 .colorFoot{
-    background-color:#838383;
+    background-color:#838383 !important;
     color:white !important;
 }
 .mainik {
     padding-top: 16px !important;
 }
-.navbary{
-    margin-bottom:0 !important;
+.navbary {
+    margin-bottom: 0 !important;
+    background-color: #838383 !important;
 }
 .tabela{
     background-color:white;

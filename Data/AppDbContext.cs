@@ -66,7 +66,7 @@ namespace Data
                 EmailConfirmed = true
             };
 
-            user.PasswordHash = ph.HashPassword(user2, "a1234A!");
+            user2.PasswordHash = ph.HashPassword(user2, "a1234A!");
 
             modelBuilder.Entity<IdentityUser>()
                 .HasData(

@@ -6,6 +6,8 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projekt ASP-NET", "Projekt ASP-NET\Projekt ASP-NET.csproj", "{2B20AF98-13DD-4DE2-B440-A5D9D603B83C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{ED463F88-3713-45B8-B9C3-8B52CCC9DEA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testy", "Testy\Testy.csproj", "{7F218069-D257-4C59-AA3E-077037FD24E7}"
 	ProjectSection(ProjectDependencies) = postProject
 		{2B20AF98-13DD-4DE2-B440-A5D9D603B83C} = {2B20AF98-13DD-4DE2-B440-A5D9D603B83C}
 	EndProjectSection
@@ -24,6 +26,10 @@ Global
 		{ED463F88-3713-45B8-B9C3-8B52CCC9DEA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED463F88-3713-45B8-B9C3-8B52CCC9DEA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED463F88-3713-45B8-B9C3-8B52CCC9DEA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F218069-D257-4C59-AA3E-077037FD24E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F218069-D257-4C59-AA3E-077037FD24E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F218069-D257-4C59-AA3E-077037FD24E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F218069-D257-4C59-AA3E-077037FD24E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
