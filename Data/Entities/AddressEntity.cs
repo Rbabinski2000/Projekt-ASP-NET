@@ -19,7 +19,7 @@ namespace Data.Entities
         public string PostalCode { get; set; }
         public string Region { get; set; }
 
-        public ISet<GuideEntity> GuideList { get; set; }
+        public ISet<GuideEntity>? GuideList { get; set; }
 
     }
 }

@@ -18,6 +18,11 @@ namespace Projekt_ASP_NET.Services
             _context.Guides.Add(guide);
             await _context.SaveChangesAsync();
         }
+        public async Task AddAddress(AddressEntity guide)
+        {
+            _context.Address.Add(guide);
+            await _context.SaveChangesAsync();
+        }
         public async Task Delete(int id)
         {
             GuideEntity? find = await _context.Guides.FindAsync(id);

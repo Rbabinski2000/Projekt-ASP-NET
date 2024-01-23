@@ -12,8 +12,9 @@ namespace Projekt_ASP_NET.Controllers
     public class TravelController : Controller
     {
         private readonly ITravelService _travelService;
+       
 
-        
+
         public TravelController(ITravelService travelService)
         {
             _travelService = travelService;
@@ -24,6 +25,12 @@ namespace Projekt_ASP_NET.Controllers
         {
             return View(_travelService.FindAll());
         }
+        [AllowAnonymous]
+        public IActionResult IndexFilter()
+        {
+            return View();
+        }
+        
         [HttpGet]
         public IActionResult CreateApi()
         {
@@ -97,6 +104,11 @@ namespace Projekt_ASP_NET.Controllers
         {
             _travelService.Delete(model.Id);
             return RedirectToAction("Index");
+        }
+
+        public IActionResult PagedIndex([FromQuery] int page = 1, [FromQuery] int size = 4)
+        {
+            return View(_travelService.FindPage(page, size));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -4,6 +4,7 @@ using Data;
 using Projekt_ASP_NET.Interfaces;
 using Projekt_ASP_NET.Services;
 using Projekt_ASP_NET.Models;
+using Projekt_ASP_NET.Controllers;
 namespace Projekt_ASP_NET
 {
     public class Program
@@ -20,7 +21,6 @@ namespace Projekt_ASP_NET
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
 
-            
             builder.Services.AddMemoryCache();
             builder.Services.AddSession();
 

@@ -23,12 +23,15 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Travel" asp-action="Index">Lista wycieczek</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Travel" asp-action="CreateApi">Lista wycieczek Api</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Travel" asp-action="indexFilter">Lista wycieczek filtrowana</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Travel" asp-action="PagedIndex">Lista wycieczek stronnicowana</a>
                         </li>
                         @if (User.IsInRole("admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Travel" asp-action="Create">CreateTravel</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Travel" asp-action="Create">Dodaj Wycieczke</a>
                             </li>
                         }
                         @if (User.IsInRole("admin"))
@@ -38,7 +41,7 @@
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Guide" asp-action="CreateGuide">CreateGuide</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Guide" asp-action="CreateGuide">Dodaj opiekuna</a>
                         </li>
                         }
                         <div class="ms-auto">

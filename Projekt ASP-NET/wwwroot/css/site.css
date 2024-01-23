@@ -70,7 +70,7 @@ body {
 }
 .table th{
     text-align:center;
-    border:0;
+    border:1px solid black;
 }
 .table th a{
     float:left;

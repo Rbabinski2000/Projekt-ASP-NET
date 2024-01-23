@@ -4,7 +4,7 @@
 }
 <div class="container mt-5 tabela">
     <h2>Dodaj nowego opiekuna</h2>
-    <form asp-action="CreateGuide" asp-controller="Guide" method="post">
+    <form asp-action="Createguide" asp-controller="Guide" method="post">
         <div asp-validation-summary="All"></div>
 
 
@@ -38,7 +38,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Dodaj Opiekuna</button>
-        <a href="@Url.Action("CreateAddress", "Address")" class="btn btn-secondary">Stwórz nowy adres</a>
+        <a href="@Url.Action("CreateAddress", "Guide")" class="btn btn-secondary">Stwórz nowy adres</a>
     </form>
 </div>
 

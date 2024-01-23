@@ -5,6 +5,7 @@ namespace Projekt_ASP_NET.Interfaces
     public interface IGuideService
     {
         public Task AddGuide(GuideEntity guide);
+        public Task AddAddress(AddressEntity guide);
         public Task Delete(int id);
         public Task Update(GuideEntity travel);
         public Task<List<GuideEntity>> FindAll();

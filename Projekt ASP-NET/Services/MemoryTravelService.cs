@@ -62,5 +62,17 @@ namespace Projekt_ASP_NET.Services
             _context.Travels.Update(travel);
             await _context.SaveChangesAsync();
         }
+        public PagingList<TravelEntity> FindPage(int page, int size)
+        {
+            return PagingList<TravelEntity>.Create(
+                    (p, s) => _context.Travels
+                            .OrderBy(b => b.Name)
+                            .Skip((p - 1) * size)
+                            .Take(s)
+                            .ToList(),
+                    _context.Travels.Count(),
+                    page,
+                    size);
+        }
     }
 }

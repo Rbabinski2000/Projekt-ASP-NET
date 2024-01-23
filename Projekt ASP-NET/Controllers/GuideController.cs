@@ -29,6 +29,7 @@ namespace Projekt_ASP_NET.Controllers
             ViewBag.AddressList = _guideService.FindAllAddressForVieModel().Result;
             return View();
         }
+        
         [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult CreateGuide(GuideEntity model)
@@ -38,6 +39,30 @@ namespace Projekt_ASP_NET.Controllers
 
                 _guideService.AddGuide(model);
                 return RedirectToAction("IndexGuide");
+            }
+            else
+            {
+                return View(model);
+            }
+
+        }
+        [Authorize(Roles = "admin")]
+        [HttpGet]
+        public IActionResult CreateAddress()
+        {
+
+            return View();
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpPost]
+        public IActionResult CreateAddress(AddressEntity model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                _guideService.AddAddress(model);
+                return RedirectToAction("CreateGuide");
             }
             else
             {

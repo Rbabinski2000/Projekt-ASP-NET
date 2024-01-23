@@ -234,17 +234,29 @@ namespace Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "68ab30dc-bfe1-4202-be84-5bc9d4d32bbf", "68ab30dc-bfe1-4202-be84-5bc9d4d32bbf", "admin", "ADMIN" });
+                values: new object[,]
+                {
+                    { "01324ace-6317-45fd-9e8c-28864d7742d1", "01324ace-6317-45fd-9e8c-28864d7742d1", "admin", "ADMIN" },
+                    { "d267df56-4fb0-4e2d-8fa7-65154ec03fbc", "d267df56-4fb0-4e2d-8fa7-65154ec03fbc", "user", "USER" }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "2e32c241-af4f-40a0-9d8a-3c05ae8c884e", 0, "5ae8affa-f3df-415e-bb3a-cf39a8b83be4", "adamo@micros.com", true, false, null, "ADAMO@MICROS.COM", "ADAMO", "AQAAAAIAAYagAAAAEFX/mCgRyRNl+PTzEDvMImuTRfuYGAQTre2qwLeU4i90wStDXwnMXh9imob4dg/+qA==", null, false, "8e35afd6-980f-4cca-a687-c3e1b68a26d5", false, "adamo" });
+                values: new object[,]
+                {
+                    { "0df47deb-ed1b-4ec5-a0bf-ca299f82adfe", 0, "5237de2f-a67b-40ab-a90f-2604e6f177da", "adamo@micros.com", true, false, null, "ADAMO@MICROS.COM", "ADAMO", "AQAAAAIAAYagAAAAEOdnoC5va+AC2S20q9sm1NKNl2/qBF2GK3uVb5qEL+IZ1teFsQ/crm/lMfftSOv5Zw==", null, false, "48b86740-5c52-40ed-93c5-ea796a2e53a4", false, "adamo" },
+                    { "49510d7f-3698-48b0-8064-ffd9fd04f35d", 0, "d72cbcb5-63b9-4ffa-a646-364b3b84b3bf", "user@microsoft.com", true, false, null, "USER@MICROSOFT.COM", "USER", null, null, false, "98015b91-049d-48f5-8c68-20e0f91d9432", false, "user" }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "68ab30dc-bfe1-4202-be84-5bc9d4d32bbf", "2e32c241-af4f-40a0-9d8a-3c05ae8c884e" });
+                values: new object[,]
+                {
+                    { "01324ace-6317-45fd-9e8c-28864d7742d1", "0df47deb-ed1b-4ec5-a0bf-ca299f82adfe" },
+                    { "d267df56-4fb0-4e2d-8fa7-65154ec03fbc", "49510d7f-3698-48b0-8064-ffd9fd04f35d" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Guides",
@@ -260,8 +272,8 @@ namespace Data.Migrations
                 columns: new[] { "Id", "Created", "EndDate", "EndPlace", "GuideId", "Name", "Participants", "StartDate", "StartPlace" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 1, 22, 14, 59, 50, 102, DateTimeKind.Local).AddTicks(7593), new DateTime(2012, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kair", 1, "Niezapomniana Podróż-Kair", "Kamil,Dawid,Michał", new DateTime(2012, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Warszawa" },
-                    { 2, new DateTime(2024, 1, 22, 14, 59, 50, 102, DateTimeKind.Local).AddTicks(7650), new DateTime(2013, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Egipt", 2, "Niezapomniana Podróż-Egipt", "Kamil,Dawid,Gabryś", new DateTime(2013, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kraków" }
+                    { 1, new DateTime(2024, 1, 23, 19, 41, 29, 671, DateTimeKind.Local).AddTicks(4637), new DateTime(2012, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kair", 1, "Niezapomniana Podróż-Kair", "Kamil,Dawid,Michał", new DateTime(2012, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Warszawa" },
+                    { 2, new DateTime(2024, 1, 23, 19, 41, 29, 671, DateTimeKind.Local).AddTicks(4688), new DateTime(2013, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Egipt", 2, "Niezapomniana Podróż-Egipt", "Kamil,Dawid,Gabryś", new DateTime(2013, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kraków" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -1,0 +1,92 @@
+﻿@using Projekt_ASP_NET.Enums
+@model Task<List<Data.Entities.TravelEntity>>
+
+<div class="container tabela">
+    <h2>Lista wycieczek</h2>
+    <div class="container">
+        <label class="form-label">Filtrowanie przez nazwę:</label>
+        <input type="text" id="filtr" />
+    </div>
+    <table class="table" id="tabelka">
+        <tr>
+            <th>Nazwa</th>
+            <th>Data rozpoczęcia</th>
+            <th>Data zakończenia</th>
+            <th>Miejsce rozpoczęcia</th>
+            <th>Opiekun</th>
+            <th>Akcje</th>
+        </tr>
+        <tbody id="ttbody">
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        let tabelka = document.getElementById("tabelka");
+        let filter = document.getElementById("filtr");
+        let pusty = "null";
+
+        function updateTravelList() {
+            let currentFilter = filter.value.trim();
+            if (filter.value == "") {
+                currentFilter = pusty;
+            }
+
+            fetch(`/api/Travel/GetFilteredList?filter=${currentFilter}`)
+                .then(response => {
+                    if (response.ok) {  
+                        return response.json();
+                    }
+                    throw "no ok, status " + response.status;
+                })
+                .then(data => {
+                    var tbody = document.getElementById('ttbody');
+                    tbody.innerHTML = "";
+                    console.log(data);
+                   
+                    for (let item of data) {
+                        let row = tbody.insertRow();
+
+                        row.insertCell(0).textContent = item.name;
+                        var startDate = new Date(item.startDate).toLocaleDateString();
+                        row.insertCell(1).textContent = startDate;
+                        var endDate = new Date(item.endDate).toLocaleDateString();
+                        row.insertCell(2).textContent = endDate;
+                        row.insertCell(3).textContent = item.startPlace;
+                        row.insertCell(4).textContent = item.guideId;
+
+                        let actionsCell = row.insertCell(5);
+                        let detailsButton = document.createElement('a');
+                        detailsButton.className = 'btn btn-primary btn-details';
+                        detailsButton.href = `/Travel/Details/${item.id}`;
+                        detailsButton.textContent = 'Szczegóły';
+
+                        let updateButton = document.createElement('a');
+                        updateButton.className = 'btn btn-success btn-update';
+                        updateButton.href = `/Travel/Update/${item.id}`;
+                        updateButton.textContent = 'Edytuj';
+
+                        let deleteButton = document.createElement('a');
+                        deleteButton.className = "btn btn-danger btn-delete";
+                        deleteButton.href = `/Travel/Delete/${item.id}`;
+                        deleteButton.textContent = 'Usuń';
+
+                        actionsCell.appendChild(detailsButton);
+                        actionsCell.appendChild(updateButton);
+                        actionsCell.appendChild(deleteButton);
+                    }
+                })
+                .catch(e => {
+                    console.log('coś jest mocno nie tak', e);
+                });
+        }
+
+        // Wywołanie funkcji przy załadowaniu strony
+        updateTravelList();
+
+        // Dodanie obsługi zdarzenia dla zmiany wartości w polu filter
+        filter.addEventListener('input', updateTravelList);
+    </script>
+}

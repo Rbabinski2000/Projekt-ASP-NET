@@ -1,0 +1,41 @@
+﻿@using Projekt_ASP_NET.Enums
+@model Data.Entities.AddressEntity
+@{
+}
+<div class="container mt-5 tabela">
+    <h2>Dodaj nowy adres</h2>
+    <form asp-action="CreateAddress" asp-controller="Guide" method="post">
+        <div asp-validation-summary="All"></div>
+
+
+        <div class="mb-3">
+            <label asp-for="City" class="form-label">Miasto</label>
+            <input class="form-control" type="text" asp-for="City" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Street" class="form-label">Ulica</label>
+            <input class="form-control" type="text" asp-for="Street" />
+            <span asp-validation-for="Street" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PostalCode" class="form-label">Kod Pocztowy</label>
+            <input class="form-control" type="text" asp-for="PostalCode" />
+            <span asp-validation-for="PostalCode" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Region" class="form-label">Region</label>
+            <input class="form-control" type="text" asp-for="Region" />
+            <span asp-validation-for="Region" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Dodaj Adres</button>
+        <a href="@Url.Action("CreateGuide", "Guide")" class="btn btn-secondary">Wróć do dodawania opiekuna</a>
+    </form>
+</div>
+
+
+

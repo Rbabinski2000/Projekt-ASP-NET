@@ -15,8 +15,8 @@ namespace Projekt_ASP_NET.Interfaces
             public  Task<List<TravelEntity>> FindAll();
             Task<TravelEntity?> FindById(int id);
             Task<List<GuideEntity>> FindAllGuidesForVieModel();
-            
 
+        public PagingList<TravelEntity> FindPage(int page, int size);
 
     }
 }

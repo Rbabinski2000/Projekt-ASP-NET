@@ -56,9 +56,22 @@ namespace Data
             
             user.PasswordHash= ph.HashPassword(user, "1234Ab!");
 
+            var user2 = new IdentityUser()
+            {
+                Id = Guid.NewGuid().ToString(),
+                UserName = "user",
+                NormalizedUserName = "USER",
+                Email = "user@microsoft.com",
+                NormalizedEmail = "USER@MICROSOFT.COM",
+                EmailConfirmed = true
+            };
+
+            user.PasswordHash = ph.HashPassword(user2, "a1234A!");
+
             modelBuilder.Entity<IdentityUser>()
                 .HasData(
-                    user
+                    user,
+                    user2
                 ) ;
             
             var adminRole = new IdentityRole()
@@ -88,6 +101,11 @@ namespace Data
                     {
                         RoleId = adminRole.Id,
                         UserId= user.Id
+                    },
+                    new IdentityUserRole<string>()
+                    {
+                        RoleId = userRole.Id,
+                        UserId = user2.Id
                     }
                 );
             
